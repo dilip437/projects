@@ -1,9 +1,0 @@
-INSERT INTO ORG(NAME, ADDRESS, COUNTRY) VALUES ('IBM', '1 Orchard Rd, Armonk, New York', 'IND');
-INSERT INTO ORG(NAME, ADDRESS, COUNTRY) VALUES ('Walmart', '702 SW 8th St, Bentonville, Arizona', 'USA');
-INSERT INTO ORG(NAME, ADDRESS, COUNTRY) VALUES ('Yamaha', '2 Chome-17-11 Takanawa, Minato City, Tokyo', 'JAP');
-INSERT INTO ORG(NAME, ADDRESS, COUNTRY) VALUES ('Google', '1600 Amphitheatre Parkway, LA', 'USA');
-
-INSERT INTO ORG(NAME, ADDRESS, COUNTRY) VALUES ('PWC', '#10, Down Street, London', 'UK');
-INSERT INTO ORG(NAME, ADDRESS, COUNTRY) VALUES ('Oracle', 'Israel', 'ISR');
-INSERT INTO ORG(NAME, ADDRESS, COUNTRY) VALUES ('Flipkart', 'Bangalore', 'IND');
-INSERT INTO ORG(NAME, ADDRESS, COUNTRY) VALUES ('KTM', 'Moscow', 'RUS');
