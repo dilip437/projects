@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+      	<title>Meeting Home Page</title>
+      	<script src="meeting/jquery-1.12.4.js"></script>
+      	<script src="meeting/config.js"></script>
+      	<script src="meeting/meeting.js"></script>
+      	<link rel="stylesheet" href="home.css"/>
+	</head>
+	<style>
+  	</style>
+  	<script src="home-main.js"></script>
+  <body>
+    <div id="home-page">
+	    <div id="login-section">Welcome: <span id="login_name"></span></div>
+		<div id="alert-recv-section">Alert Recv</div>
+		<div id="left-section">
+			<div class="left-menu-section-1">
+				<div class="new-meeting-section">
+				  <a href="#">New Meeting</a>
+				</div>
+				<div class="new-team-section">
+				  <a href="#">New Team</a>
+				</div>
+				<div class="new-org-section">
+				  <a href="#">New Organization</a>
+				</div>
+			</div>
+			<div class="left-menu-section-2">
+				<div class="left-menu-header-2">Update</div>
+				<div class="update-team-section update-team">
+				  <a href="#">Team</a>
+				</div>
+				<div class="update-org-section">
+				  <a href="#">Organization</a>
+				</div>
+			</div>
+			<div class="left-menu-section-2-1">
+				<div class="left-menu-header-2">Inbox</div>
+				<div class="update-team-section inbox-meeting-all">
+				  <a href="#">Meeting(s)</a>
+				</div>
+				<div class="update-org-section inbox-message-all">
+				  <a href="#">Message(s)</a>
+				</div>
+			</div>
+			<div class="left-menu-section-2-1">
+				<div class="left-menu-header-2">Misc</div>
+				<div class="update-team-section send-message-link">
+				  <a href="#">Send Message</a>
+				</div>
+				<div class="update-org-section">
+				  <a href="#" onclick="alert('Chat');">Chat</a>
+				</div>
+			</div>
+			<div class="left-menu-section-2-1">
+				<div class="left-menu-header-2">Admin</div>
+				<div class="update-team-section manage-role">
+				  <a href="#">Role</a>
+				</div>
+				<div class="update-org-section reset-password">
+				  <a href="#">Reset Password</a>
+				</div>
+			</div>
+			<div class="left-menu-section-3">
+				<div class="change-password-section">
+				  <a href="#" onclick="alert('Change Password');">Change Password</a>
+				</div>
+			</div>
+		</div>
+		<div id="bottom-log-section" class="bottom-log-section">
+	</div>
+    </div>
+    <div class="main-area" style="border:1px solid red;">
+	<div class="meeting-area">
+	    <div class="meeting-area-header">Meetings</div>
+	    <div class="meeting-area-text"></div>
+	</div>
+	<div class="message-area">
+	    <div class="message-area-header">Messages</div>
+	    <div class="message-area-text"></div>
+	</div>
+    </div>
+    <div class="new-meeting-container">
+		<div class="new-meeting-header">New Meeting</div>
+    	<form id="newMeetingForm" name="newMeetingForm">
+            <div class="form-group">
+            	<div class="input-group clearfix">
+                    <input type="text" id="route_id" required="required" maxlength="25"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9.\-]{1,25})$" title="Only A-Z & 0-9 allowed (Max 25 chars)"
+                    placeholder="Name" autocomplete="off" class="form-control"/>
+                </div>
+            	<div class="input-group clearfix">
+                    <input type="text" id="meeting-time" required="required" maxlength="16"
+                    pattern="^([0-3][0-9]/[0-1][0-2]/20[1-9][0-9] [0-2][0-9]:[0-5][0-9])$"
+                    title="Only dd/MM/yyyy HH:mm allowed" 
+                    placeholder="Time" autocomplete="off" class="form-control"/>
+                </div>
+            	<div class="input-group clearfix">
+                    <input type="text" id="meeting-users" required="required" maxlength="125"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 ,.]{1,125})$" title="Only A-Z & 0-9 allowed (Max 125 chars)"
+                    placeholder="Guests" autocomplete="off" class="form-control"/>
+                </div>
+                <div class="input-group clearfix">
+		    		<select id="other-user-names" class="form-control"></select>
+                </div>
+            	<div class="input-group clearfix">
+		    		<select id="meeting-group" class="form-control"></select>
+                </div>
+				<div class="input-group clearfix">
+				    <button type="button" class="primary close_button">Close</button>
+                    <button type="submit" class="primary submit_button">OK</button>
+                    <!-- <a href="#" onclick="test_date_time_regex();">Test Date Time regex</a> -->
+                </div>
+            </div>
+    	</form>
+    </div>
+    <div class="new-team-container">
+		<div class="new-team-header">New Team</div>
+    	<form id="newTeamForm" name="newTeamForm">
+            <div class="form-group">
+            	<div class="input-group clearfix">
+                    <input type="text" id="team-name" required="required" maxlength="25"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .\-@]{1,25})$" title="Only A-Z & 0-9 allowed (Max 25 chars)"
+                    placeholder="Name" autocomplete="off" class="form-control"/>
+                </div>
+                <div class="input-group clearfix">
+                    <input type="text" id="team-users-display" required="required" maxlength="125"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .,\-@]{1,125})$" title="Only A-Z & 0-9 allowed (Max 125 chars)"
+                    placeholder="Users" autocomplete="off" class="form-control"/>
+                    <input type="hidden" id="team-users"/>
+                </div>
+            	<div class="input-group clearfix">
+		    		<select id="user-names" class="form-control"></select>
+                </div>
+				<div class="input-group clearfix">
+					<button type="button" class="primary close_button">Close</button>
+                    <button type="submit" class="primary submit_button">OK</button>
+                </div>
+            </div>
+    	</form>
+    </div>
+	<div class="new-org-container">
+		<div class="new-org-header">New Organization</div>
+    	<form id="newOrganizationForm" name="newOrganizationForm">
+            <div class="form-group">
+            	<div class="input-group clearfix">
+                    <input type="text" id="org-name" required="required" maxlength="25"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .\-_@#]{1,25})$" title="Only A-Z & 0-9 allowed (Max 25 chars)"
+                    placeholder="Name" autocomplete="off" class="form-control"/>
+                </div>
+                <div class="input-group clearfix">
+                    <input type="text" id="org-address" required="required" maxlength="125"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .,\-_@#]{1,125})$" title="Only A-Z & 0-9 allowed (Max 125 chars)"
+                    placeholder="Address" autocomplete="off" class="form-control"/>
+                </div>
+            	<div class="input-group clearfix">
+		    		<select id="org-country" class="form-control">
+			    		<option value="-1">Select Country</option>
+			    		<option value="CAN">Canada</option>
+			    		<option value="GER">Germany</option>
+			    		<option value="IND">India</option>
+			    		<option value="ISR">Israel</option>
+			    		<option value="JAP">Japan</option>
+			    		<option value="RUS">Russia</option>
+			    		<option value="UK">UK</option>
+			    		<option value="USA">USA</option>
+		    		</select>
+                </div>
+				<div class="input-group clearfix">
+					<button type="button" class="primary close_button">Close</button>
+                    <button type="submit" class="primary submit_button">OK</button>
+                </div>
+            </div>
+    	</form>
+    </div>
+	<div class="update-team-area">
+	    <div class="update-team-area-header">Teams</div>
+	    <div class="update-team-area-text"></div>
+	    <div class="input-group clearfix" style="margin-bottom: 15px;">
+            <button type="submit" class="primary" style="margin-left: 350px;">Close</button>
+        </div>
+	</div>
+	<div class="update-team-container">
+		<div class="update-team-header">Update Team</div>
+    	<form id="updateTeamForm" name="updateTeamForm">
+            <div class="form-group">
+            	<div class="input-group clearfix">
+                    <input type="text" id="update-team-name" required="required" maxlength="25"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .\-_@#]{1,25})$" title="Only A-Z & 0-9 allowed (Max 25 chars)"
+                    placeholder="Name" autocomplete="off" class="form-control"/>
+                    <input type="hidden" id="update-team-id"/>
+                </div>
+                <div class="input-group clearfix">
+                	<input type="text" id="update-team-users-display" required="required" maxlength="125"
+                	pattern="^([A-Za-z]{1})([A-Za-z0-9 .,\-_@#]{1,125})$" title="Only A-Z & 0-9 allowed (Max 125 chars)"
+                	placeholder="Users" autocomplete="off" class="form-control"/>
+                    <input type="hidden" id="update-team-users"/>
+                </div>
+            	<div class="input-group clearfix">
+		    		<select id="update-user-names" class="form-control"></select>
+                </div>
+				<div class="input-group clearfix">
+					<button type="button" class="primary close_button">Cancel</button>
+                    <button type="submit" class="primary submit_button">Update</button>
+                </div>
+            </div>
+    	</form>
+   	</div>
+	<div class="update-org-area">
+	    <div class="update-org-area-header">Organizations</div>
+	    <div class="update-org-area-text"></div>
+	    <div class="input-group clearfix" style="margin-bottom: 15px;">
+            <button type="submit" class="primary" style="margin-left: 350px;">Close</button>
+        </div>
+	</div>
+	<div class="update-org-container">
+		<div class="update-org-header">Update Organization</div>
+    	<form id="updateOrgForm" name="updateOrgForm">
+            <div class="form-group">
+            	<div class="input-group clearfix">
+                    <input type="text" id="update-org-name" required="required" maxlength="25"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .\-_@#]{1,25})$" title="Only A-Z & 0-9 allowed (Max 25 chars)"
+                    placeholder="Name" autocomplete="off" class="form-control"/>
+                    <input type="hidden" id="update-org-id"/>
+                </div>
+                <div class="input-group clearfix">
+                	<input type="text" id="update-org-address" required="required" maxlength="125"
+                	pattern="^([A-Za-z]{1})([A-Za-z0-9 .,\-_@#]{1,125})$" title="Only A-Z & 0-9 allowed (Max 125 chars)" 
+                	placeholder="Address" autocomplete="off" class="form-control"/>
+                </div>
+               	<div class="input-group clearfix">
+		    		<select id="update-org-country" class="form-control">
+			    		<option value="-1">Select Country</option>
+			    		<option value="CAN">Canada</option>
+			    		<option value="GER">Germany</option>
+			    		<option value="IND">India</option>
+			    		<option value="ISR">Israel</option>
+			    		<option value="JAP">Japan</option>
+			    		<option value="RUS">Russia</option>
+			    		<option value="UK">UK</option>
+			    		<option value="USA">USA</option>
+		    		</select>
+                </div>
+				<div class="input-group clearfix">
+					<button type="button" class="primary close_button">Cancel</button>
+                    <button type="submit" class="primary submit_button">Update</button>
+                </div>
+            </div>
+    	</form>
+   	</div>
+	<div class="inbox-meeting-area">
+	    <div class="inbox-meeting-area-header">Meetings</div>
+	    <div class="inbox-meeting-area-text"></div>
+	    <div class="input-group clearfix" style="margin-bottom: 15px;">
+            <button type="submit" class="primary" style="margin-left: 350px;">Close</button>
+        </div>
+	</div>
+    <div class="inbox-message-area">
+	    <div class="inbox-message-area-header">Messages</div>
+	    <div class="inbox-message-area-text"></div>
+	    <div class="input-group clearfix" style="margin-bottom: 15px;">
+            <button type="submit" class="primary" style="margin-left: 350px;">Close</button>
+        </div>
+	</div>
+	<div class="new-message-container">
+		<div class="new-message-header">New Message</div>
+    	<form id="newMessageForm" name="newMessageForm">
+            <div class="form-group">
+            	<div class="input-group clearfix">
+                    <input type="text" id="message-text" required="required" maxlength="125"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .,\-_@#]{1,125})$" title="Only A-Z & 0-9 allowed (Max 125 chars)" 
+                    placeholder="Text" autocomplete="off" class="form-control"/>
+                </div>
+            	<div class="input-group clearfix">
+                    <input type="text" id="message-users" required="required" maxlength="125"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .,\-_@#]{1,125})$" title="Only A-Z & 0-9 allowed (Max 125 chars)" 
+                    placeholder="Receiver" autocomplete="off" class="form-control"/>
+                </div>
+            	<div class="input-group clearfix">
+		    		<select id="message-group" class="form-control"></select>
+                </div>
+				<div class="input-group clearfix">
+					<button type="button" class="primary close_button">Close</button>
+                    <button type="submit" class="primary submit_button">Send</button>
+                </div>
+            </div>
+    	</form>
+    </div>
+    <div class="reset-password-area">
+		<div class="reset-password-header">Reset Password</div>
+    	<form id="resetPasswordForm" name="resetPasswordForm">
+            <div class="form-group">
+            	<div class="input-group clearfix">
+                    <input type="text" id="reset-password-user-name" required="required" maxlength="25"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .\-_@#]{1,25})$" title="Only A-Z & 0-9 allowed (Max 25 chars)" 
+                    placeholder="User" autocomplete="off" class="form-control"/>
+                </div>
+				<div class="input-group clearfix">
+					<button type="button" class="primary close_button">Close</button>
+                    <button type="submit" class="primary submit_button">Reset</button>
+                </div>
+            </div>
+    	</form>
+    </div>
+    
+	<div class="manage-role-area">
+	    <div class="manage-role-area-header">Manage Role</div>
+	    <div style="margin-left: 10px; margin-top: 10px; font-weight: bold;">Group(s)</div>
+	    <div class="manage-role-group-text"></div>
+	  	<div style="margin-left: 10px; margin-top: 10px; font-weight: bold;">User(s)</div>
+	    <div class="manage-role-user-text"></div>
+	    <div class="input-group clearfix" style="margin-top: 15px;margin-bottom: 15px;">
+            <button type="button" class="primary manage-role-area-button-1" style="margin-left: 305px;">Close</button>
+            <button type="button" class="primary manage-role-area-button-2">Quick Assign</button>
+        </div>
+	</div>
+	
+	<div class="assign-role-area">
+		<div class="assign-role-header">Assign Role</div>
+    	<form id="newAssignRoleForm" name="newAssignRoleForm">
+            <div class="form-group">
+<!--             	<div class="input-group clearfix">
+                    <input type="text" id="role-user-name" placeholder="User" autocomplete="off" class="form-control"/>
+                </div>
+              	<div class="input-group clearfix">
+		    		<select id="role-group" class="form-control"></select>
+                </div> -->
+                <input type="hidden" id="hidden-assign-type-user-or-group"/>
+                <div class="user-or-group-name"></div>
+                <input type="hidden" id="user-or-group-value"/>
+                <div class="user-display-role-names"></div>
+            	<div class="input-group clearfix">
+		    		<select id="role-name" class="form-control">
+			    		<option value="-1">Select Role</option>
+			    		<option value="CREATE">CREATE</option>
+			    		<option value="UPDATE">UPDATE</option>
+			    		<option value="DELETE">DELETE</option>
+			    		<option value="READ">READ</option>
+			    		<option value="GUEST">GUEST</option>
+			    		<option value="ADMIN">ADMIN</option>
+			    		<option value="APP_ADMIN">APPADMIN</option>
+		    		</select>
+                </div>
+				<div class="input-group clearfix">
+	         		<button type="button" class="primary assign-role-area-button-1">Cancel</button>
+                    <button type="submit" class="primary assign-role-area-button-2">Assign</button>
+                    <!-- <a href="#" onclick="populate_user_roles('su');">GET</a> -->
+                </div>
+            </div>
+    	</form>
+    </div>
+
+	<div class="assign-quick-role-area">
+		<div class="assign-quick-role-header">Assign Role</div>
+    	<form id="newAssignQuickRoleForm" name="newAssignQuickRoleForm">
+            <div class="form-group">
+             	<div class="input-group clearfix">
+                    <input type="text" id="quick-role-user-name" required="required" maxlength="125"
+                    pattern="^([A-Za-z]{1})([A-Za-z0-9 .,\-_@#]{1,125})$" title="Only A-Z & 0-9 allowed (Max 125 chars)" 
+                    placeholder="User" autocomplete="off" class="form-control"/>
+                </div>
+<!--               	<div class="input-group clearfix">
+		    		<select id="quick-role-group" class="form-control"></select>
+                </div> -->
+            	<div class="input-group clearfix">
+		    		<select id="quick-role-name" class="form-control">
+			    		<option value="-1">Select Role</option>
+			    		<option value="CREATE">CREATE</option>
+			    		<option value="UPDATE">UPDATE</option>
+			    		<option value="DELETE">DELETE</option>
+			    		<option value="READ">READ</option>
+			    		<option value="GUEST">GUEST</option>
+			    		<option value="ADMIN">ADMIN</option>
+			    		<option value="APP_ADMIN">APPADMIN</option>
+		    		</select>
+                </div>
+				<div class="input-group clearfix">
+	         		<button type="button" class="primary assign-quick-role-area-button-1">Cancel</button>
+                    <button type="submit" class="primary assign-quick-role-area-button-2">Assign</button>
+                    <!-- <a href="#" onclick="populate_user_roles('su');">GET</a> -->
+                </div>
+            </div>
+    	</form>
+    </div>
+    
+	<script src="home.js"></script>
+  </body>
+</html>

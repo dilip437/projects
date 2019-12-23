@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta charset="utf-8">
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+      	<title>Spring Boot WebSocket Chat Application | CalliCoder</title>
+      	
+		<script src="config.js"> </script>
+		<script src="common.js"> </script>
+
+        <script src="../screenshare/js/socket.io.js"></script>
+        <script src="../screenshare/js/adapter-latest.js"></script>
+        <script src="../screenshare/js/IceServersHandler.js"></script>
+        <script src="../screenshare/js/getScreenId.js"></script>
+        <script src="../screenshare/js/CodecsHandler.js"></script>
+        <script src="../screenshare/js/BandwidthHandler.js"></script>
+        <script src="../screenshare/js/screen.js"> </script>
+
+      	<script src="jquery-1.12.4.js"></script>
+  		<script>
+	  	    var channel_hash_number;
+	  	    var location_href;
+		    var init = function(){
+			    if(!location.hash.replace('#', '').length) {			
+					channel_hash_number = (Math.random() * 100).toString().replace('.', '');
+					/* location_href = location.href.split('#')[0] + 'view.html' + '#' + channel_hash_number; */
+					location_href = location.href.split(meeting_path)[0];
+					location_href = location_href + screenshare_view_path + '#' + channel_hash_number;
+			    }else{
+					location_href = location.href;
+			    }
+		    };
+  		</script>
+  		<script src="../screenshare/screenshare_main.js"> </script>
+      	<link rel="stylesheet" href="css/main.css" />
+  </head>
+    <style>
+		.room-section {
+			position: relative;
+		}
+		.chat-user-name {
+			position: relative; text-align: left; font-size: 15px; color: #008800; padding-left: 15px;
+		}
+		.chat-room-name {
+			position: relative; text-align: left; font-size: 15px; color: #0000FF;
+		}
+  </style>
+  <script src="meeting.js"></script>
+  <script src="../chat/chat.js"></script>
+  <script src="../chat/p2pchat.js"></script>
+  <script src="send-alert.js"></script>
+ 
+  <body>
+    <noscript>
+      <h2>Sorry! Your browser doesn't support Javascript</h2>
+    </noscript>
+    <div id="username-page">
+	    <div id="login-section" >Welcome: <span id="login_name"></span></div>
+		<div id="alert-recv-section" style="text-align: left; display: none;" >
+			<a href="#" id="alert-recv-text" >Alert Recv</a>
+			<a href="#" style="float: right; text-decoration: none; color: #FF4743;" onclick="$('#alert-recv-section').css({'display': 'none'});">Close</a>
+		</div>
+		<div id="left-section">
+			<div id="left-menu-section">
+				<div id="new-room-section">
+				  <a href="#" onclick="newMeeting();">New Meeting</a>
+				</div>
+				<div id="screen-sharing-section">
+				  <a href="#" id ="share-screen">Share Screen</a>
+				</div>
+			</div>
+			<div id="rooms-header" >Joined Meeting</div>
+			<div id="rooms-section" ></div>
+			<div id='meeting-section' class='meeting-section'>
+				<div class="inbox-header">Inbox</div>
+				<div id='inbox-section' class='inbox-section'></div>
+				<a href="#" id="send-alert-link" 
+					style="position: fixed; top: 510px; left: 5px; text-decoration: none; color: #008800;">Send Alert</a> 
+			</div>
+        </div>
+		<!-- <div id="users-video-section" style="position: fixed; top: 535px; left: 5px; box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27); width: 940px;">
+			<table style="width: 100%;">
+				<tr>
+					<td style="height: 80px; width: 50%;">&nbsp;</td>
+					<td style="width: 50%;">&nbsp;</td>
+				</tr>
+			</table>
+		</div> -->
+
+		<div id="users-video-section" style="position: fixed; top: 535px; height: 100px; width:900px; text-align: left; color: #FF4743; border: 1px solid #0000FF; overflow-y: auto;" >
+
+		</div>
+
+
+        <div class="username-page-container">
+            <form id="usernameForm" name="usernameForm">
+                <div class="form-group">
+                    <input type="hidden" id="name" />
+                    <input type="hidden" id="user-name" />
+                </div>
+                <div class="form-group">
+                    <input type="text" id="route_id" placeholder="Roomname" autocomplete="off" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="accent username-submit">Start</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="chat-page" >
+        <div class="chat-container">
+            <div class="chat-header">Chat</div>
+            <div class="connecting">Connecting...</div>
+            <ul id="messageArea"></ul>
+            <form id="messageForm" name="messageForm" nameForm="messageForm">
+                <div class="form-group">
+                    <div class="input-group clearfix">
+                        <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                        <button type="submit" class="primary">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="p2p-chat-page">
+        <div id="chat-holder" class="chat-holder"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="main.js"></script> 
+  </body>
+</html>

@@ -1,0 +1,953 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: #333;
+    background-color: #f4f4f4;
+    height: 100%;
+}
+
+body:before {
+    height:100px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #128ff2;
+    content: "";
+    z-index: 0;
+}
+
+.clearfix:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-control {
+    min-height: 38px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+}
+
+.form-group {
+
+}
+
+input {
+    padding-left: 10px;
+    outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.7em;
+}
+
+a {
+    color: #128ff2;
+}
+
+button {
+    box-shadow: none;
+    border: 1px solid transparent;
+    font-size: 14px;
+    outline: none;
+    line-height: 100%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 0.6rem 1rem;
+    border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    min-height: 38px;
+}
+
+button.default {
+    background-color: #e8e8e8;
+    color: #333;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+button.primary {
+    background-color: #128ff2;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+}
+
+button.accent {
+    background-color: #ff4743;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+}
+
+#home-page {
+    text-align: center;
+}
+
+#alert-recv-section {
+    position: fixed;
+    top: 100px;
+    left:450px;
+    height: 25px;
+    max-height:25px;
+    background-color: #D6D4D4;
+    border:1px solid #928F8F;
+    width: 200px;
+    max-width: 200px;
+    display: none;
+}
+
+#left-section {
+    position: fixed;
+    top: 100px;
+    height: 430px;
+    max-height:430px;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 200px;
+    max-width: 200px;
+}
+
+.left-menu-section-1 {
+    margin:2px;
+    background-color: #D6D4D4;
+    height: 100px;
+    max-height:100px;
+}
+
+.new-meeting-section {
+    text-align: left;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.new-meeting-section a {
+    text-decoration:none;
+    color: #FF4743;
+}
+
+.new-team-section {
+    text-align: left;
+    padding-left: 5px;
+    padding-top: 15px;
+}
+
+.new-team-section a {
+   text-decoration:none;
+}
+
+.new-org-section {
+    text-align: left;
+    padding-left: 5px;
+/*     padding-top: 5px; */
+}
+
+.new-org-section a {
+   text-decoration:none;
+}
+
+.left-menu-section-2 {
+    margin:2px;
+    margin-top:5px;
+    height: 50px;
+    max-height:50px;
+}
+
+.left-menu-section-2-1 {
+	margin:2px;
+    margin-top:10px;
+    height: 50px;
+    max-height:50px;
+}
+
+.left-menu-header-2 {
+    text-align: left;
+    padding-left: 5px;
+/*     padding-top: 5px; */
+    font-weight:bold;
+}
+
+.update-team-section {
+    text-align: left;
+    padding-left: 15px;
+/*     padding-top: 5px; */
+}
+
+.update-team-section a {
+   text-decoration:none;
+}
+
+.update-org-section {
+    text-align: left;
+    padding-left: 15px;
+    /* padding-top: 5px; */
+}
+
+.update-org-section a {
+   text-decoration:none;
+}
+
+.left-menu-section-3 {
+    text-align: left;
+    padding-left: 5px;
+/*     padding-top: 5px; */
+}
+
+.change-password-section {
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.change-password-section a {
+    position: fixed; 
+    top: 510px; 
+    left: 5px; 
+    text-decoration:none; 
+    color: #008800;
+}
+
+
+.left-bottom-menu-section {
+    position: fixed;
+    top: 383px;
+    height: 150px;
+    max-height:150px;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 200px;
+    max-width: 200px;
+}
+
+.left-bottom-menu-section a {
+    position: fixed;
+    top: 510px;
+    left: 5px;
+    text-decoration:none;
+    color: #008800;
+}
+
+.main-area {
+    position: fixed; 
+    top: 100px; 
+    left: 205px;
+    width: 740px;    
+    max-width: 740px;
+    height: 430px;
+    max-height: 430px;
+}
+
+.meeting-area {
+    position: relative;
+    padding:5px;
+    padding-left:10px;
+    line-height: 1.58;
+}
+
+.meeting-area-header {
+    font-weight:bold;
+}
+
+.meeting-area-text {
+    color:GREY;
+    padding:inherit;
+    height: 100px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.message-area {
+    position: relative;
+    padding:5px;
+    padding-left:10px;
+    line-height: 1.58;
+}
+
+.message-area-header {
+    font-weight:bold;
+}
+
+.message-area-text {
+    color:GREY;
+    padding:inherit;
+    height: 150px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.main-area-header {
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.new-meeting-container {
+    position: fixed;
+    top:150px;
+    left: 300px;
+    width: 500px;
+    max-width: 500px;
+    height: 335px;
+    max-height: 335px;
+    border:1px solid GREY;
+    background-color: #D6D4D4;
+    text-align: center;
+}
+
+.new-meeting-header {
+    padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.new-meeting-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#newMeetingForm .input-group input {
+    width: calc(100% - 200px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newMeetingForm #route_id {
+	margin-top: 25px;
+}
+
+#newMeetingForm #meeting-group {
+    width: calc(100% - 200px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newMeetingForm #other-user-names {
+    width: calc(100% - 200px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newMeetingForm .meeting-name {
+    margin-top: 25px;
+}
+
+#newMeetingForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.new-team-container {
+    position: fixed;
+    top:150px;
+    left: 350px;
+    width: 400px;
+    max-width: 400px;
+    height: 250px;
+    max-height: 250px;
+    border:1px solid GREY;
+    background-color: #D6D4D4;
+    text-align: center;
+}
+
+.new-team-header {
+    padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.new-team-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#newTeamForm .input-group input {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newTeamForm #user-names {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newTeamForm #team-name {
+    margin-top: 25px;
+}
+
+#newTeamForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.new-org-container {
+    position: fixed;
+    top:150px;
+    left: 350px;
+    width: 400px;
+    max-width: 400px;
+    height: 250px;
+    max-height: 250px;
+    border:1px solid GREY;
+    background-color: #D6D4D4;
+    text-align: center;
+}
+
+.new-org-header {
+    padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.new-org-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#newOrganizationForm .input-group input {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newOrganizationForm #org-country {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newOrganizationForm #org-name {
+    margin-top: 25px;
+}
+
+#newOrganizationForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.inbox-meeting-area {
+    position: fixed;
+    left: 175px;
+    top: 130px;
+/*     padding:5px;
+    padding-left:10px;
+    line-height: 1.58; */
+    background-color: #D6D4D4;
+    width: 795px;
+    max-width: 795px;
+    border: 1px solid GREY; 
+}
+
+.inbox-meeting-area-header {
+	padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.inbox-meeting-area-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.inbox-meeting-area-text {
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	margin-top: 15px;
+    padding-left:10px;
+    /* padding:inherit; */
+    height: 295px;
+    max-height: 295px;
+    border:1px solid GREY;
+    overflow-y: auto;
+}
+
+.inbox-message-area {
+    position: fixed;
+    left: 175px;
+    top: 130px;
+/*     padding:5px;
+    padding-left:10px;
+    line-height: 1.58; */
+    background-color: #D6D4D4;
+    width: 795px;
+    max-width: 795px;
+    border: 1px solid GREY; 
+}
+
+.inbox-message-area-header {
+	padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.inbox-message-area-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.inbox-message-area-text {
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	margin-top: 15px;
+    padding-left:10px;
+    height: 295px;
+    max-height: 295px;
+    border:1px solid GREY;
+    overflow-y: auto;
+}
+
+.new-message-container {
+    position: fixed;
+    top:150px;
+    left: 250px;
+    width: 600px;
+    max-width: 600px;
+    height: 300px;
+    max-height: 300px;
+    border:1px solid GREY;
+    background-color: #D6D4D4;
+    text-align: center;
+}
+
+.new-message-header {
+    padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.new-message-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#newMessageForm .input-group input {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newMessageForm #message-group {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newMessageForm #message-text {
+    margin-top: 25px;
+}
+
+#newMessageForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.update-team-area {
+    position: fixed;
+    left: 175px;
+    top: 130px;
+    background-color: #D6D4D4;
+    width: 795px;
+    max-width: 795px;
+    border: 1px solid GREY; 
+}
+
+.update-team-area-header {
+	padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.update-team-area-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.update-team-area-text {
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	margin-top: 15px;
+	padding-left:10px;
+    height: 295px;
+    max-height: 295px;
+ 	border:1px solid GREY;
+    overflow-y: auto;
+}
+
+.update-team-container {
+	position: fixed;
+    top: 190px;
+    left: 350px;
+    width: 400px;
+    max-width: 400px;
+    height: 250px;
+    max-height: 250px;
+    border:1px solid GREY;
+    text-align: center;
+}
+
+.update-team-header {
+	padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.update-team-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#updateTeamForm .input-group input {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#updateTeamForm #update-user-names {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#updateTeamForm #update-team-name {
+    margin-top: 25px;
+}
+
+#updateTeamForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.update-org-area {
+    position: fixed;
+    left: 175px;
+    top: 130px;
+    background-color: #D6D4D4;
+    width: 795px;
+    max-width: 795px;
+    border: 1px solid GREY; 
+}
+
+.update-org-area-header {
+	padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.update-org-area-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.update-org-area-text {
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	margin-top: 15px;
+	padding-left:10px;
+    height: 295px;
+    max-height: 295px;
+ 	border:1px solid GREY;
+    overflow-y: auto;
+}
+
+.update-org-container {
+	position: fixed;
+    top: 190px;
+    left: 350px;
+    width: 400px;
+    max-width: 400px;
+    height: 250px;
+    max-height: 250px;
+	background-color: #D6D4D4;
+    border:1px solid GREY;
+    text-align: center;
+}
+
+.update-org-header {
+	padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.update-org-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#updateOrgForm .input-group input {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#updateOrgForm #update-org-country {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#updateOrgForm #update-org-name {
+    margin-top: 25px;
+}
+
+#updateOrgForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.reset-password-area {
+    position: fixed;
+    top:150px;
+    left: 350px;
+    width: 400px;
+    max-width: 400px;
+    height: 165px;
+    max-height: 165px;
+    border:1px solid GREY;
+    background-color: #D6D4D4;
+    text-align: center;
+}
+
+.reset-password-header {
+    padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.reset-password-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#resetPasswordForm .input-group input {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#resetPasswordForm #reset-password-user-name {
+    margin-top: 25px;
+}
+
+#resetPasswordForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.assign-role-area {
+    position: fixed;
+    top: 175px;
+    left: 350px;
+    width: 400px;
+    max-width: 400px;
+    height: 250px;
+    max-height: 250px;
+    border:1px solid GREY;
+    background-color: #D6D4D4;
+    text-align: center;
+}
+
+.assign-role-header {
+    padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.assign-role-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#newAssignRoleForm .input-group input {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newAssignRoleForm #role-name {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newAssignRoleForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.assign-quick-role-area {
+    position: fixed;
+    top: 175px;
+    left: 350px;
+    width: 400px;
+    max-width: 400px;
+    height: 250px;
+    max-height: 250px;
+    border:1px solid GREY;
+    background-color: #D6D4D4;
+    text-align: center;
+}
+
+.assign-quick-role-header {
+    padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.assign-quick-role-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+#newAssignQuickRoleForm .input-group input {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newAssignQuickRoleForm #quick-role-name {
+    width: calc(100% - 100px);
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+#newAssignQuickRoleForm #quick-role-user-name {
+    margin-top: 25px;
+}
+
+#newAssignQuickRoleForm .input-group button {
+    width: 80px;
+    height: 38px;
+    margin-top: 15px;
+}
+
+.manage-role-area {
+    position: fixed;
+    left: 175px;
+    top: 130px;
+    background-color: #D6D4D4;
+    width: 795px;
+    max-width: 795px;
+    border: 1px solid GREY; 
+}
+
+.manage-role-area-header {
+	padding:5px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid #ececec;
+}
+
+.manage-role-area-header h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.manage-role-group-text {
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	margin-top: 5px;
+	padding-left:10px;
+    height: 100px;
+    max-height: 100px;
+    border:1px solid GREY;
+    overflow-y: auto;
+}
+
+.manage-role-user-text {
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	margin-top: 5px;
+	padding-left:10px;
+    height: 115px;
+    max-height: 115px;
+	border:1px solid GREY;
+    overflow-y: auto;
+}
+
+ .user-or-group-name {
+	color: #128ff2;
+	font-size: 18px; 
+	margin-top: 5px; 
+}
+
+.user-display-role-names {
+	border: 1px solid GREY; 
+	margin-top: 5px;
+	margin-left: 50px;
+	height : 75px;
+	max-height : 75px;
+	width: calc(100% - 100px);
+    padding-left: 5px;
+    text-align: left;
+	overflow-y: auto;
+}
+
+#login-section {
+    font-size: 18px;
+    color: #DDDDDD;
+    position: fixed;
+    padding-left: 10px;
+}
+
+.bottom-log-section {
+    position: fixed; 
+    top: 535px; 
+    height: 100px; 
+    width:945px; 
+    text-align: left; 
+    color: #FF4743; 
+    border: 1px solid #0000FF; 
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 730px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
+

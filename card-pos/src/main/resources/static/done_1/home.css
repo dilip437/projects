@@ -1,0 +1,186 @@
+/*html,body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: #333;
+    background-color: #f4f4f4;
+    height: 100%;
+}*/
+
+.home-page {
+    text-align: center;
+}
+
+input {
+    padding-left: 5px;
+    outline: none;
+    height:20px;
+}
+
+button {
+    box-shadow: none;
+    border: 1px solid transparent;
+    font-size: 14px;
+    outline: none;
+    line-height: 100%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 0.6rem 1rem;
+    border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    min-height: 38px;
+}
+
+button.default {
+    background-color: #e8e8e8;
+    color: #333;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+#screen-table-wait {
+  display:none;
+} 
+
+#screen-table-amount {
+  display:none;
+}
+
+#screen-table-pin {
+    display:none;
+}
+
+.screen-table-text {
+    width: 100%;
+    height: calc(100% - 40px);
+    text-align:center;
+}
+
+.screen-text-wait {
+    height:20px;
+    text-align:center;
+    padding-left: 60px;
+}
+
+.screen-text-line-1 {
+    height:20px;
+    text-align:left;
+    padding-left: 20px;
+}
+
+.screen-text-line-2 {
+    height:20px;
+    text-align:left;
+    padding-left: 20px;
+}
+
+.pos-div {
+    border: 1px solid #FFFFFF; 
+    width: 450px; 
+    height: 650px; 
+    margin-left: 400px; 
+    background-image: url(./pos-2.jpg); 
+    background-attachment: fixed;
+    background-position: 200px -55px;
+    background-size: 840px 840px;
+    background-repeat: no-repeat;		
+}
+
+.screen-div {
+    width: 245px; 
+    height: 188px; 
+    margin-left: 80px; 
+    margin-top: 175px;
+}
+
+.screen-header {
+    width: 100%; 
+    margin-top: 10px; 
+    text-align:center;
+}
+
+.screen-text {
+    overflow-y:auto; 
+    width: 100%; 
+    height: 100%; 
+    margin-top: 20px;
+}
+
+.keyboard-div {
+    width: 216px; 
+    height: 175px; 
+    margin-left: 96px; 
+    margin-top: 65px;
+}
+
+.swipe-div {
+    position:fixed; 
+    border: 1px solid blue; 
+    left: 900px; 
+    top: 150px; 
+    width: 350px; 
+    height: 170px;
+}
+
+.swipe-div-header {
+    width: 100%; 
+    margin-top: 10px; 
+    text-align:center;
+}
+
+.swipe-div button {
+    width:75px;
+}
+
+.card-number-title-div {
+    width: 100%; 
+    margin-top: 10px; 
+    text-align:left; 
+    padding-left: 25px;
+}
+
+.card-number-div {
+    width: 100%; 
+    margin-top: 5px; 
+    text-align:center;
+}
+
+.card-number-div input {
+    height:25px; 
+    width: calc(100% - 50px);
+}
+
+.card-number-button-div {
+    width: 100%; 
+    margin-top: 20px; 
+    text-align:center;
+}
+
+.blank-cell {
+    width: 15px;
+}
+
+.cell-11, .cell-21, .cell-31, .cell-41 {
+    width: 72px; 
+    height: 27px;
+}
+
+.cell-51 {
+    width: 72px; 
+    height: 35px;
+}
+
+.cell-12, .cell-22, .cell-32, .cell-42, .cell-52 {
+    width: 72px;
+}
+
+.cell-13, .cell-23, .cell-33, .cell-43, .cell-53 {
+    width: 68px;
+}
+
